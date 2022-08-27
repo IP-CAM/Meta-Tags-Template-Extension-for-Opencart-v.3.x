@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>Meta Tags Template</name>
+	<code>opencart-meta-template</code>
+	<version>1.0</version>
+	<author>Dmytro Sokolenko</author>
+	<link>https://github.com/SDG1212</link> 
+	<file path="catalog/controller/information/contact.php">
+		<operation>
+			<search trim="true"><![CDATA[
+				$this->document->setTitle($this->language->get('heading_title'));
+			]]></search>
+			<add position="replace" trim="true"><![CDATA[
+		if (!empty($this->config->get('meta_tags_template_meta_title_' . $this->config->get('config_language_id')))) {
+			$meta_title = str_replace('[Name]', $this->language->get('heading_title'), $this->config->get('meta_tags_template_meta_title_' . $this->config->get('config_language_id')));
+		} else {
+			$meta_title = $this->language->get('heading_title');
+		}
+
+		$this->document->setTitle($meta_title);
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/information/sitemap.php">
+		<operation>
+			<search trim="true"><![CDATA[
+				$this->document->setTitle($this->language->get('heading_title'));
+			]]></search>
+			<add position="replace" trim="true"><![CDATA[
+		if (!empty($this->config->get('meta_tags_template_meta_title_' . $this->config->get('config_language_id')))) {
+			$meta_title = str_replace('[Name]', $this->language->get('heading_title'), $this->config->get('meta_tags_template_meta_title_' . $this->config->get('config_language_id')));
+		} else {
+			$meta_title = $this->language->get('heading_title');
+		}
+
+		$this->document->setTitle($meta_title);
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/product/category.php">
+		<operation>
+			<search trim="true"><![CDATA[
+				$this->document->setTitle($category_info['meta_title']);
+			]]></search>
+			<add position="replace" trim="true"><![CDATA[
+			if (!empty($this->config->get('meta_tags_template_meta_title_' . $this->config->get('config_language_id')))) {
+				$meta_title = str_replace('[Name]', $category_info['name'], $this->config->get('meta_tags_template_meta_title_' . $this->config->get('config_language_id')));
+			} else {
+				$meta_title = $category_info['meta_title'];
+			}
+
+			$this->document->setTitle($meta_title);
+			]]></add>
+		</operation>
+		<operation>
+			<search trim="true"><![CDATA[
+				$this->document->setDescription($category_info['meta_description']);
+			]]></search>
+			<add position="replace" trim="true"><![CDATA[
+			if (!empty($this->config->get('meta_tags_template_meta_description_' . $this->config->get('config_language_id')))) {
+				$meta_description = str_replace('[Name]', $category_info['name'], $this->config->get('meta_tags_template_meta_description_' . $this->config->get('config_language_id')));
+			} else {
+				$meta_description = $category_info['meta_description'];
+			}
+
+			$this->document->setDescription($meta_description);
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/product/product.php">
+		<operation>
+			<search trim="true"><![CDATA[
+				$this->document->setTitle($product_info['meta_title']);
+			]]></search>
+			<add position="replace" trim="true"><![CDATA[
+			if (!empty($this->config->get('meta_tags_template_meta_title_' . $this->config->get('config_language_id')))) {
+				$meta_title = str_replace('[Name]', $product_info['name'], $this->config->get('meta_tags_template_meta_title_' . $this->config->get('config_language_id')));
+			} else {
+				$meta_title = $product_info['meta_title'];
+			}
+
+			$this->document->setTitle($meta_title);
+			]]></add>
+		</operation>
+		<operation>
+			<search trim="true"><![CDATA[
+				$this->document->setDescription($product_info['meta_description']);
+			]]></search>
+			<add position="replace" trim="true"><![CDATA[
+			if (!empty($this->config->get('meta_tags_template_meta_description_' . $this->config->get('config_language_id')))) {
+				$meta_description = str_replace('[Name]', $product_info['name'], $this->config->get('meta_tags_template_meta_description_' . $this->config->get('config_language_id')));
+			} else {
+				$meta_description = $product_info['meta_description'];
+			}
+
+			$this->document->setDescription($meta_description);
+			]]></add>
+		</operation>
+	</file>
+</modification>
